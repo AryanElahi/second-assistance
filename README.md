@@ -1,9 +1,6 @@
 # دموی «ویزیتور دوم»
 
 > **Visitor Dovom (Second Visitor)** — prototype of an AI sales assistant for FMCG distribution companies: daily priority list of at-risk outlets, a drafted message for the sales operator, and order extraction from the operator's free-text call note (human confirms before saving). Phase 2: an autonomous agent that talks to the shopkeeper. All data is synthetic. Run: `npm install && npm start`, then open http://localhost:3000.
-
-نمونه‌ی اولیه برای اپلای REASON و کوره. همه‌ی داده‌ها ساختگی‌اند (۲۰۰ مغازه، حدود ۴٬۰۰۰ فاکتور ۶ ماهه، ۱۲ کالا با قیمت ساختگی).
-
 ## اجرا
 نیاز: Node.js نسخه‌ی ۲۰ یا بالاتر.
 
@@ -44,10 +41,4 @@ npm start
 | `server.js` | سرور و API |
 | `public/` | صفحه‌ها (راست‌به‌چپ) |
 | `data/store.json` | نتیجه‌ی پیگیری‌ها؛ دکمه‌ی «پاک کردن نتایج» آن را خالی می‌کند |
-| `test/` | `npm test` |
-
-## محدودیت‌ها (صادقانه در پیچ‌دک هم گفته شود)
-- داده ساختگی است و اتصال به نرم‌افزار پخش واقعی ندارد.
-- تماس صوتی ندارد؛ گفت‌وگو متنی است (مثل پیام‌رسان).
-- موتور اولویت در این نسخه قاعده‌محور است؛ مدل یادگیرنده بعد از جمع شدن نتیجه‌ی پیگیری‌های واقعی جایش را می‌گیرد.
-- مدل رایگان برای Pilot با داده‌ی واقعی مناسب نیست (ذخیره‌ی درخواست‌ها، سرعت، سقف استفاده). در Pilot مدل پولی یا اختصاصی لازم است.
+| `test/` | `npm test` | Pilot مدل پولی یا اختصاصی لازم است.
