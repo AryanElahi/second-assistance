@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ویزیتور دوم — دمو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400..800&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>ویزیتور دوم</h1>
+    <span id="company" class="muted"></span>
+  </div>
+  <nav class="tabs">
+    <button class="tab active" data-view="today">پیگیری امروز</button>
+    <button class="tab" data-view="dash">داشبورد مدیر فروش</button>
+  </nav>
+  <span id="mode" class="badge"></span>
+</header>
+
+<main id="view-today" class="today">
+  <section class="queue">
+    <div class="panel-head">
+      <h2>۲۰ مغازه‌ی امروز</h2>
+      <p id="dataline" class="muted small"></p>
+    </div>
+    <ol id="queue"></ol>
+  </section>
+
+  <section class="chat">
+    <div id="chat-empty" class="empty">یک مغازه را از فهرست انتخاب کنید تا گفت‌وگو شروع شود.</div>
+    <div id="chat-box" hidden>
+      <div class="panel-head">
+        <div class="head-row">
+          <h2 id="chat-title"></h2>
+          <div class="seg" role="tablist">
+            <button class="seg-btn active" data-mode="assist">دستیار اپراتور · فاز ۱</button>
+            <button class="seg-btn" data-mode="agent">عامل خودکار · فاز ۲</button>
+          </div>
+        </div>
+        <p id="chat-sub" class="muted small"></p>
+      </div>
+
+      <div id="assist-view" class="assist">
+        <div class="block">
+          <div class="block-head"><h3>پیام پیشنهادی برای مغازه‌دار</h3>
+            <div><button id="copy" class="ghost">کپی</button><button id="redraft" class="ghost">نوشتن دوباره</button></div></div>
+          <textarea id="draft" rows="4" placeholder="در حال نوشتن…"></textarea>
+          <ul id="points" class="points"></ul>
+        </div>
+        <div class="block">
+          <h3>نتیجه‌ی تماس (یادداشت آزاد اپراتور)</h3>
+          <textarea id="note" rows="3" placeholder="مثلاً: گفت ۲ کارتن روغن و یه کیسه برنج بفرستید، ماکارونی هنوز داره"></textarea>
+          <button id="extract" class="primary">تبدیل به سفارش</button>
+        </div>
+        <div id="result" class="block" hidden>
+          <div class="block-head"><h3>نتیجه برای تأیید</h3><span id="r-outcome" class="tag"></span></div>
+          <p id="r-summary"></p>
+          <table id="r-order" class="cart"></table>
+          <label id="r-reason-wrap" class="field">علت نخریدن <input id="r-reason"></label>
+          <ul id="r-unclear" class="points warn"></ul>
+          <button id="confirm" class="primary">تأیید و ثبت</button>
+        </div>
+      </div>
+
+      <div id="agent-view" class="agent-view" hidden>
+        <div id="messages" class="messages"></div>
+        <form id="composer" class="composer">
+          <input id="input" autocomplete="off" placeholder="به‌جای مغازه‌دار بنویسید…">
+          <button type="submit">ارسال</button>
+        </form>
+        <p class="muted small hint">فاز ۲: عامل خودش با مغازه‌دار گفت‌وگو می‌کند. در این دمو شما نقش مغازه‌دار را بازی می‌کنید.</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="card">
+      <h3>چرا این مغازه؟</h3>
+      <ul id="why" class="plain"><li class="muted">—</li></ul>
+    </div>
+    <div class="card">
+      <h3 id="cart-title">سفارش پیشنهادی</h3>
+      <table id="cart" class="cart"></table>
+      <p id="cart-status" class="pill"></p>
+    </div>
+  </aside>
+</main>
+
+<main id="view-dash" class="dash" hidden>
+  <div class="kpis">
+    <div class="kpi"><span class="label">در صف امروز</span><span id="k-queue" class="value"></span></div>
+    <div class="kpi"><span class="label">پیگیری‌شده</span><span id="k-followed" class="value"></span></div>
+    <div class="kpi"><span class="label">سفارش ثبت‌شده</span><span id="k-orders" class="value"></span></div>
+    <div class="kpi"><span class="label">فروش برگشته</span><span id="k-revenue" class="value"></span></div>
+  </div>
+  <div class="card">
+    <div class="panel-head row">
+      <h3>نتیجه‌ی پیگیری‌ها</h3>
+      <div>
+        <a class="link" href="/api/invoices.csv" download="invoices.csv">دانلود داده‌ی فاکتورها (CSV)</a>
+        <button id="reset" class="ghost">پاک کردن نتایج</button>
+      </div>
+    </div>
+    <table id="results" class="results"></table>
+  </div>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
